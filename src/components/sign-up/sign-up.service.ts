@@ -1,4 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class SignUpService {}
+export class SignUpService {
+    
+    loadSignup(){
+        return "get signUp"
+    }
+}
