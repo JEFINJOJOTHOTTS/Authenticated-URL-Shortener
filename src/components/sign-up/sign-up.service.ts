@@ -11,13 +11,14 @@ export class SignUpService {
         return "get signUp"
     }
 
-    async createUser(userData: UserInfo) {
+    async signUpPost(userData: UserInfo) {
         const doesUserExist = await this.userSrv.findUser(userData.mail);
         if (doesUserExist !== null) {
             throw new UnauthorizedException
             ('Email Already Exist');
         }
-        return await this.userSrv.createUser(userData);
-    }
+         await this.userSrv.createUser(userData);
+         return
+        }
 
 }

@@ -1,89 +1,136 @@
 
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-        const email = document.getElementById("mail")
-        const password = document.getElementById("password")
-        const confirmPassword = document.getElementById("confirmPassword")
+const email = document.getElementById("mail")
+const password = document.getElementById("password")
+const confirmPassword = document.getElementById("confirmPassword")
 
-        //email varification
-        function emailValidation() {
-            const emailValue = email.value
-            if (!emailValue.match(emailRegex)) {
-                email.style.color = "red";
-                return false;
-            }
-            email.style.color = "#1e3932";
+//email varification
+function emailValidation() {
+    const emailValue = email.value
+    if (!emailValue.match(emailRegex)) {
+        email.style.color = "red";
+        return false;
+    }
+    email.style.color = "#1e3932";
 
-            console.log("email")
-            return true
-        }
+    console.log("email")
+    return true
+}
 
-         //show password
-         function showPassword() {
-                if (password.type === "password") {
-                    password.type = "text";
-                } else {
-                    password.type = "password";
-                }
-            }
+//show password
+function showPassword() {
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
 
-            //show confirm password
-            function showConfirmPassword() {
-                if (confirmPassword.type === "password") {
-                    confirmPassword.type = "text";
-                } else {
-                    confirmPassword.type = "password";
-                }
-            }
+//show confirm password
+function showConfirmPassword() {
+    if (confirmPassword.type === "password") {
+        confirmPassword.type = "text";
+    } else {
+        confirmPassword.type = "password";
+    }
+}
 
-            function passwordValidation() {
-             
-                // Validate capital letters
-                let upperCaseLetters = /[A-Z]/g;
-                // Validate lowercase letters
-                let lowerCaseLetters = /[a-z]/g;
+function passwordValidation() {
 
-                // Validate numbers
-                let numbers = /[0-9]/g;
-                if (
+    // Validate capital letters
+    let upperCaseLetters = /[A-Z]/g;
+    // Validate lowercase letters
+    let lowerCaseLetters = /[a-z]/g;
 
-                    password.value.match(lowerCaseLetters) && password.value.match(upperCaseLetters) && password.value.match(numbers) && password.value.length >= 8) {
-                    messagePasword.innerHTML = ""
-                    console.log("password")
-                    return true
-                } else {
-                    messagePasword.innerHTML = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                    return false
-                }
+    // Validate numbers
+    let numbers = /[0-9]/g;
+    if (
 
-            }
+        password.value.match(lowerCaseLetters) && password.value.match(upperCaseLetters) && password.value.match(numbers) && password.value.length >= 8) {
+        messagePasword.innerHTML = ""
+        console.log("password")
+        return true
+    } else {
+        messagePasword.innerHTML = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        return false
+    }
 
-            // confirm password
-            function confirmPasswordValidation() {
-                if ($('#password').val() == $('#confirmPassword').val()) {
-                    $('#confirmMessage').html('')
-                    console.log("confirm")
-                    return true
-                } else
-                    $('#confirmMessage').html('Not Matching');
-                return false
-            }
+}
 
-            function signUpValidateForm() {
-                console.log("validate form")
-                if (emailValidation() && passwordValidation() && confirmPasswordValidation()) {
-                    return true
-                } else {
-                    return false
-                }
-            }
+// confirm password
+function confirmPasswordValidation() {
+    if ($('#password').val() == $('#confirmPassword').val()) {
+        $('#confirmMessage').html('')
+        console.log("confirm")
+        return true
+    } else
+        $('#confirmMessage').html('Not Matching');
+    return false
+}
+
+function signUpValidateForm(event) {
+    event.preventDefault()
+
+    console.log("validate form")
+    if (emailValidation() && passwordValidation() && confirmPasswordValidation()) {
+        axios.post('/signup', { mail: email.value, password: password.value }).then(() => {
+            swal({
+                text: 'User Created',
+                title: 'Need to Login',
+                icon: 'success',
+
+            }).then(() => {
+                window.location.href = 'login'
+            })
+        }).catch(() => {
+            swal({
+                text: 'User Exist',
+                title: 'Need to Login',
+                icon: 'error',
+
+            }).then(() => {
+                window.location.href = 'login'
+            })
+        })
+
+    } else {
+        return false
+    }
+}
 
 
-            function loginValidateForm() {
-                console.log("validate form")
-                if (emailValidation() && passwordValidation() && confirmPasswordValidation()) {
-                    return true
-                } else {
-                    return false
-                }
-            }
+function loginValidateForm(event) {
+    event.preventDefault()
+
+    console.log("validate form")
+    if (emailValidation() && passwordValidation()) {
+        axios.post('/login', { mail: email.value, password: password.value }).then(() => {
+            window.location.href = 'login'
+        }).catch((msg) => {
+            swal({
+                text: msg,
+                title: 'Need to Login',
+                icon: 'error',
+
+            }).then(() => {
+                window.location.href = 'login'
+            })
+        })
+
+    } else {
+        return false
+    }
+}
+
+function userExist(even) {
+    event.preventDefault()
+
+    axios.get(`/admin/listProduct/${productId}/${content}`).then(() => {
+        alert(`changed the category status`)
+        document.getElementById(`${productId}`).checked = content
+
+    })
+
+
+}
