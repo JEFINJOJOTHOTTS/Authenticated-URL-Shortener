@@ -105,17 +105,11 @@ function loginValidateForm(event) {
 
     console.log("validate form")
     if (emailValidation() && passwordValidation()) {
-        axios.post('/login', { mail: email.value, password: password.value }).then(() => {
-            window.location.href = 'login'
-        }).catch((msg) => {
-            swal({
-                text: msg,
-                title: 'Need to Login',
-                icon: 'error',
+        axios.post('/login', { mail: email.value, password: password.value }).then((token) => {
+            // window.location.href = 'signup'
 
-            }).then(() => {
-                window.location.href = 'login'
-            })
+        }).catch((msg) => {
+            console.log(msg)
         })
 
     } else {
@@ -123,14 +117,3 @@ function loginValidateForm(event) {
     }
 }
 
-function userExist(even) {
-    event.preventDefault()
-
-    axios.get(`/admin/listProduct/${productId}/${content}`).then(() => {
-        alert(`changed the category status`)
-        document.getElementById(`${productId}`).checked = content
-
-    })
-
-
-}
