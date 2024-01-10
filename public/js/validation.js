@@ -1,5 +1,6 @@
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const urlRegex=/^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/;
 
 const email = document.getElementById("mail")
 const password = document.getElementById("password")
@@ -52,7 +53,7 @@ function passwordValidation() {
         console.log("password")
         return true
     } else {
-        messagePasword.innerHTML = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        messagePasword.innerHTML = "Hint : Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
         return false
     }
 
@@ -106,10 +107,10 @@ function loginValidateForm(event) {
     console.log("validate form")
     if (emailValidation() && passwordValidation()) {
         axios.post('/login', { mail: email.value, password: password.value }).then((token) => {
-            // window.location.href = 'signup'
+            window.location.href = 'signup'
 
         }).catch((msg) => {
-            console.log(msg)
+            messagePasword.innerHTML=msg
         })
 
     } else {

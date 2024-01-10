@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/page-login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:26:06 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Evara - eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg"> -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <!-- dataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#urlTable').DataTable();
+        });
+    </script>
+    
+
+</head>
+
+<body>
+
+    <main class="main">
+        <section class="pt-30 pb-150">
+            <div class="row pl-100">
+                <h2 style="color:#046963;">URL Shortener</h2>
+            </div>
+
+            <div class="container pt-50">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
+                        <div class="row">
+                            <div class="col-md-11 col-lg-8 m-auto">
+                                <div class="padding_eight_all bg-white">
+                                    <form id="minifyUrl" onsubmit="return minifyUrl(event)" class="form-inline">
+
+                                        <div class="row justify-content-between">
+                                            <input type="text" required="" id="inpLongUrl" class="col-md-8"
+                                                onkeyup="emailValidation()" name="mail" placeholder="Enter Url">
+                                            <button type="submit"
+                                                class="btn btn-fill-out btn-block hover-up pl-1 col-md-3"
+                                                name="login">Shrink</button>
+                                            <div id="message">
+                                                <span id="messagePasword" class="invalid">
+                                                </span>
+                                            </div>
+
+                                            <div class="form-group">
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <table id="urlTable" class="display">
+                    <thead>
+                        <tr>
+                            <th class="text-center " style="width: 20px;">Sl.No</th>
+                            <th style="max-width: 100%;">Long URL</th>
+                            <th style="width: 180px;">Short</th>
+                            <th style="width: 150px;">Long URL</th>
+                            <th  style="width: 150px;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                            <td>Row 1 Data 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                            <td>Row 1 Data 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </div>
+           
+        </section>
+    </main>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <h5 class="mb-5">Now Loading</h5>
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor JS-->
+    <!-- <script src="js/vendor/jquery-3.6.0.min.js"></script> -->
+    <!-- Template  JS -->
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+
+</body>
+
+
+
+</html>

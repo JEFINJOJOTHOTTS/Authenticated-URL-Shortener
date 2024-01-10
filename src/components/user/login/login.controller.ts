@@ -14,9 +14,9 @@ export class LoginController {
     async loginPost(@Body() body: UserInfo,@Res() res) {
         const token = await this.loginServices.loginPost(body);
       // Set the token in the 'Authorization' header
-      res.header('Authorization', `Bearer ${token.access_token}`);
+    //   res.header('Authorization', `Bearer ${token.access_token}`);
 
-        res.locals.jwt = token
+        // res.locals.jwt = token
         console.log("token  ---   ", token)
         // return token.access_token
         res.status(200).send({ access_token: token.access_token });
