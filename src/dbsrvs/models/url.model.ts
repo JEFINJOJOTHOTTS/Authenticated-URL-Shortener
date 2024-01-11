@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+// import {nanoid} from 'nanoid'
 const urlSchema = new mongoose.Schema(
     {
         userId: {
@@ -11,6 +11,7 @@ const urlSchema = new mongoose.Schema(
                 url: {
                     type: String,
                     required: true,
+                    default:"nanoid()",
                 },
                 miniUrl: {
                     type: String,
@@ -29,4 +30,5 @@ const urlSchema = new mongoose.Schema(
     },
 );
 
-module.exports = mongoose.model('url', urlSchema);
+const Url = mongoose.model('url', urlSchema);
+export { Url as urlModel };

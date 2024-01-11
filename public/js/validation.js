@@ -106,8 +106,8 @@ function loginValidateForm(event) {
 
     console.log("validate form")
     if (emailValidation() && passwordValidation()) {
-        axios.post('/login', { mail: email.value, password: password.value }).then((token) => {
-            window.location.href = 'signup'
+        axios.post('/login', { mail: email.value, password: password.value }).then(() => {
+            window.location.href = 'minify-url'
 
         }).catch((msg) => {
             messagePasword.innerHTML=msg
@@ -116,5 +116,8 @@ function loginValidateForm(event) {
     } else {
         return false
     }
+
+    // const jwtToken= localStorage.getItems('jwtToken')
+    // console.log(jwtToken)
 }
 

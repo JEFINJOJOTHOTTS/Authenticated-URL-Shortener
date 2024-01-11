@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ComponentsModule } from './components/user/users.module';
 import { UrlModule } from './components/url/url.module';
+import { UrlService } from './dbsrvs/srv/url/url.service';
 
 @Module({
   imports: [ComponentsModule, UrlModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UrlService],
 })
 export class AppModule {}

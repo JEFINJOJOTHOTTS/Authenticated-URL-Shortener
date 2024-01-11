@@ -11,19 +11,16 @@ export class LoginController {
     //create user
     // @HttpCode(HttpStatus.OK)
     @Post()
-    async loginPost(@Body() body: UserInfo,@Res() res) {
+    async loginPost(@Body() body: UserInfo, @Res() res) {
         const token = await this.loginServices.loginPost(body);
-      // Set the token in the 'Authorization' header
-    //   res.header('Authorization', `Bearer ${token.access_token}`);
+        await res.cookie('jwt', token.access_token, { httpOnly: true, maxAge: 60 * 60 * 100 * 1000 });//jwt Token stored in cookie
 
-        // res.locals.jwt = token
         console.log("token  ---   ", token)
-        // return token.access_token
-        res.status(200).send({ access_token: token.access_token });
+        res.json();
 
     }
-       // return JSON.parse(JSON.stringify(newUser));
- 
+    // return JSON.parse(JSON.stringify(newUser));
+
     // load signUp page
     // @UseGuards(AuthGuard)
     @Get()
