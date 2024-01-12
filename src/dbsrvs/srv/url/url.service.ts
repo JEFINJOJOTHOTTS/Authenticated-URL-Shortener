@@ -3,15 +3,16 @@ import { urlModel } from '../../models/url.model';
 
 @Injectable()
 export class UrlService {
-    async findUrls(userId: string) {
+    async findUser(userId: string) {
         try {
+            console.log("qqqqqqqqqqq")
             return await urlModel.findOne({ userId });
         } catch (err) {
             console.log(err);
         }
     }
 
-    async addNewUrl(userId: string, url: URL) {
+    async createNewUserAndAddNewUrl(userId: string, url: URL) {
         try {
             const newAddedUrl = new urlModel({
                 userId: userId,
@@ -22,6 +23,20 @@ export class UrlService {
                 ],
             });
             return newAddedUrl.save();
+
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+    async addNewUrl(userId: string, url: URL) {
+        try {
+            const userUrls = await this.findUser(userId)
+
+            userUrls.urls.push({
+                url: url,
+            });
+            return await userUrls.save();
 
         }
         catch (err) {

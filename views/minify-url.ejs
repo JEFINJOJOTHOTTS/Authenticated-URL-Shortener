@@ -14,7 +14,7 @@
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    
+
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg"> -->
     <!-- Template CSS -->
@@ -30,7 +30,7 @@
             $('#urlTable').DataTable();
         });
     </script>
-    
+
 
 </head>
 
@@ -48,14 +48,14 @@
                         <div class="row">
                             <div class="col-md-11 col-lg-8 m-auto">
                                 <div class="padding_eight_all bg-white">
-                                    <form id="minifyUrl" onsubmit="return minifyUrl(event)" class="form-inline">
+                                    <!-- <form id="minifyUrl" onsubmit="return minifyUrl(event)" class="form-inline"> -->
+                                    <form id="minifyUrl" method="Post" class="form-inline">
 
                                         <div class="row justify-content-between">
-                                            <input type="text" required="" id="inpLongUrl" class="col-md-8"
-                                                onkeyup="emailValidation()" name="mail" placeholder="Enter Url">
+                                            <input type="text" required="" id="inpLongUrl" class="col-md-8" name="url"
+                                                placeholder="Enter Url">
                                             <button type="submit"
-                                                class="btn btn-fill-out btn-block hover-up pl-1 col-md-3"
-                                                name="login">Shrink</button>
+                                                class="btn btn-fill-out btn-block hover-up pl-1 col-md-3">Shrink</button>
                                             <div id="message">
                                                 <span id="messagePasword" class="invalid">
                                                 </span>
@@ -72,36 +72,39 @@
                     </div>
                 </div>
                 <hr>
-                <table id="urlTable" class="display">
-                    <thead>
-                        <tr>
-                            <th class="text-center " style="width: 20px;">Sl.No</th>
-                            <th style="max-width: 100%;">Long URL</th>
-                            <th style="width: 180px;">Short</th>
-                            <th style="width: 150px;">Long URL</th>
-                            <th  style="width: 150px;">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                    </tbody>
-                </table>
-            
+                <% if(urlsData){%>
+                    <table id="urlTable" class="display">
+                        <thead>
+                            <tr>
+                                <th class="text-center " style="width: 20px;">Sl.No</th>
+                                <th style="max-width: 100%;">Long URL</th>
+                                <th style="width: 200px;">Short</th>
+                                <th style="width: 150px; display: none;">Long URL</th>
+                                <th style="width: 150px;">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% urlsData.forEach((urlData,index)=>{%>
+                                <tr>
+                                    <td>
+                                        <%= index+1 %>
+                                    </td>
+                                    <td>
+                                        <%=urlData.url%>
+                                    </td>
+                                    <td>
+                                        <%=urlData.miniUrl%>
+                                    </td>
+                                    <td style="display: none;">Row 1 Data 2</td>
+                                    <td><a class="btn btn-outline-danger" href="#" role="button">Delete</a>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                    <%}%>
             </div>
-           
+
         </section>
     </main>
     <!-- Preloader Start -->

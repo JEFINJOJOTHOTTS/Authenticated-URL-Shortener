@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-// import {nanoid} from 'nanoid'
+import { nanoid } from 'nanoid'
 const urlSchema = new mongoose.Schema(
     {
         userId: {
@@ -11,11 +11,11 @@ const urlSchema = new mongoose.Schema(
                 url: {
                     type: String,
                     required: true,
-                    default:"nanoid()",
                 },
                 miniUrl: {
                     type: String,
                     required: true,
+                    default: nanoid(),
                 },
             },
         ],

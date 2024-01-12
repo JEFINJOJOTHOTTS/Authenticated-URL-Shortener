@@ -17,7 +17,7 @@ export class LoginService {
         } else {
             const status = await this.userSrv.passwordCompare(userExist, userData)
             if (status) {
-                const payload = { sub: userExist.userId, username: userData.mail };
+                const payload = { userId: userExist.userId, username: userData.mail };
                 return {
                     access_token: await this.jwtService.signAsync(payload),
                 }
