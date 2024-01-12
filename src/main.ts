@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
-import { InternalServerErrorException } from '@nestjs/common'
+import { InternalServerErrorException, Res } from '@nestjs/common'
 import mongoose from 'mongoose';
 import 'dotenv/config'
 import * as cookieParser from 'cookie-parser';
@@ -16,6 +16,8 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
   app.use(cookieParser());
+  
+
 
   try {
 

@@ -11,7 +11,7 @@ export class LoginController {
     //create user
     // @HttpCode(HttpStatus.OK)
     @Post()
-    async loginPost(@Body() body: UserInfo, @Res() res) {
+    async loginPost(@Body() body: UserInfo, @Res() res:Response) {
         const token = await this.loginServices.loginPost(body);
         await res.cookie('jwt', token.access_token, { httpOnly: true, maxAge: 60 * 60 * 100 * 1000 });//jwt Token stored in cookie
 
@@ -19,10 +19,7 @@ export class LoginController {
         res.json();
 
     }
-    // return JSON.parse(JSON.stringify(newUser));
 
-    // load signUp page
-    // @UseGuards(AuthGuard)
     @Get()
     loadLogin(@Res() res: Response) {
 

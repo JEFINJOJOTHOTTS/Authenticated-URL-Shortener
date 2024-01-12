@@ -116,8 +116,6 @@ function loginValidateForm(event) {
     } else {
         return false
     }
-
-    // const jwtToken= localStorage.getItems('jwtToken')
-    // console.log(jwtToken)
 }
+
 

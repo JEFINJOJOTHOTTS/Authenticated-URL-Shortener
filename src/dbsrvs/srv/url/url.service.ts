@@ -5,7 +5,6 @@ import { urlModel } from '../../models/url.model';
 export class UrlService {
     async findUser(userId: string) {
         try {
-            console.log("qqqqqqqqqqq")
             return await urlModel.findOne({ userId });
         } catch (err) {
             console.log(err);
@@ -45,20 +44,18 @@ export class UrlService {
     }
 
     async findUrl(userId: string, miniUrl: string) {
-        return await urlModel.find(
+        const result = await urlModel.find(
             {
                 userId: userId,
-                urls: {
-                    $elemMatch: {
-                        miniUrl: miniUrl,
-                    },
-                },
+                'urls.miniUrl': miniUrl,
             },
             {
                 _id: 0,
                 'urls.$': 1,
-            },
+            }
         );
+        
+        return result;
     }
 
     async removeUrl(userId: string, miniUrl: string) {

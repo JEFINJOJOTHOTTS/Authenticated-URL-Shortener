@@ -3,11 +3,10 @@ import {
   ExecutionContext,
   Injectable,
   UnauthorizedException,
-  Req,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import 'dotenv/config';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -15,10 +14,13 @@ export class AuthGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
+    const response = context.switchToHttp().getResponse<Response>();
+
     const token = this.requireAuth(request);
-    console.log("token", token)
+    // console.log("token", token)
     if (!token) {
-      throw new UnauthorizedException();
+      response.redirect('/login')
+      // throw new UnauthorizedException();
     }
 
     try {

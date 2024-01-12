@@ -5,38 +5,45 @@ import { UrlService } from 'src/dbsrvs/srv/url/url.service';
 export class MinifyUrlService {
     constructor(private urlService: UrlService) { }
 
-    async getUser(userId) {
+    async getUser(userId: string) {
         // const abc=nanoid()
         const data = await this.urlService.findUser(userId)
         console.log("sdsaffsga", data)
         return data
     }
 
-    async postUrl(userId, url) {
+    async postUrl(userId: string, url:URL) {
         const user = await this.urlService.findUser(userId)
         if (user === null) {
             this.urlService.createNewUserAndAddNewUrl(userId, url)
         } else {
             const urls = user.urls;
-            
-            const doesUrlExist = await urls.findIndex(o => o.url === url);
+
+            const doesUrlExist = await urls.findIndex(o => o.url === url.toString());
             if (doesUrlExist !== -1) {
                 throw new BadRequestException('Url already Minified');
             }
-            
-            this.urlService.addNewUrl(userId,url)
-        
 
+            return this.urlService.addNewUrl(userId, url)
         }
-        console.log("hdhdhhd")
-        return this.urlService.addNewUrl(userId, url)
     }
 
-    async getUrl(userId, miniUrl) {
-        return this.urlService.findUrl(userId, miniUrl)
+    async getUrl(userId:string, miniUrl:IGetUrlParameters) {
+        return this.urlService.findUrl(userId, miniUrl.miniUrl)
     }
 
-    async deleteUrl(userId, miniUrl) {
-        return this.urlService.removeUrl(userId, miniUrl)
+    async deleteUrl(userId:string, miniUrl:IGetUrlParameters) {
+        return this.urlService.removeUrl(userId, miniUrl.miniUrl)
     }
 }
+
+
+export interface Iinput {
+    url: string;
+    userId: string;
+    miniUrl: string;
+  }
+  export interface IGetUrlParameters {
+    miniUrl: string;
+  }
+  

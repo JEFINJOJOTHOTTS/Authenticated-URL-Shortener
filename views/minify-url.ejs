@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>Authenticated-URL-Shortener    </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+     <!-- sweetalert -->
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#urlTable').DataTable();
@@ -48,22 +52,20 @@
                         <div class="row">
                             <div class="col-md-11 col-lg-8 m-auto">
                                 <div class="padding_eight_all bg-white">
-                                    <!-- <form id="minifyUrl" onsubmit="return minifyUrl(event)" class="form-inline"> -->
-                                    <form id="minifyUrl" method="Post" class="form-inline">
+                                    <form id="minifyUrl" onsubmit="return minifyUrl(event)" class="form-inline">
+                                    <!-- <form id="minifyUrl" method="Post" class="form-inline"> -->
 
                                         <div class="row justify-content-between">
                                             <input type="text" required="" id="inpLongUrl" class="col-md-8" name="url"
                                                 placeholder="Enter Url">
                                             <button type="submit"
                                                 class="btn btn-fill-out btn-block hover-up pl-1 col-md-3">Shrink</button>
-                                            <div id="message">
-                                                <span id="messagePasword" class="invalid">
-                                                </span>
-                                            </div>
-
-                                            <div class="form-group">
-                                            </div>
+                                           
+                                        </div> <div id="">
+                                            <span id="message" class="">
+                                            </span>
                                         </div>
+
                                     </form>
 
                                 </div>
@@ -72,7 +74,7 @@
                     </div>
                 </div>
                 <hr>
-                <% if(urlsData){%>
+                <% if(urlsData && urlsData.urls){%>
                     <table id="urlTable" class="display">
                         <thead>
                             <tr>
@@ -84,19 +86,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% urlsData.forEach((urlData,index)=>{%>
+                            <% urlsData.urls.forEach((urlData,index)=>{%>
                                 <tr>
                                     <td>
                                         <%= index+1 %>
                                     </td>
                                     <td>
+                                     
                                         <%=urlData.url%>
                                     </td>
-                                    <td>
-                                        <%=urlData.miniUrl%>
+                                    <td><a class="btn btn-outline-danger btn-transparent"  href="minify-url/<%=urlData.miniUrl%>" role="button">
+                                            <%=urlData.miniUrl%>
+                                        </a>
+
                                     </td>
                                     <td style="display: none;">Row 1 Data 2</td>
-                                    <td><a class="btn btn-outline-danger" href="#" role="button">Delete</a>
+
+                                    <td><a class="btn btn-outline-danger" href="#" style="  background-color: red"
+                                            role="button">Delete</a>
                                     </td>
                                 </tr>
                                 <%})%>
@@ -126,7 +133,7 @@
     <!-- <script src="js/vendor/jquery-3.6.0.min.js"></script> -->
     <!-- Template  JS -->
     <script src="js/main.js"></script>
-    <script src="js/validation.js"></script>
+    <script src="js/urlValidation.js"></script>
 
 </body>
 
