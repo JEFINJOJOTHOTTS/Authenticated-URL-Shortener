@@ -32,8 +32,8 @@ export class MinifyUrlService {
         return this.urlService.findUrl(userId, miniUrl.miniUrl)
     }
 
-    async deleteUrl(userId:string, miniUrl:IGetUrlParameters) {
-        return this.urlService.removeUrl(userId, miniUrl.miniUrl)
+    async deleteUrl(userId:string, miniUrl:string) {
+        return this.urlService.removeUrl(userId, miniUrl)
     }
 }
 

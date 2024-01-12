@@ -37,8 +37,9 @@ export class MinifyUrlController {
 
     @UseGuards(AuthGuard)
     @Patch(':miniUrl')
-    async updateUrlArray(@Param() miniUrl: string, @Body() body: any) {
-        const response = await this.minifyURLService.deleteUrl(body.user.userId, { miniUrl });
+    async updateUrlArray(@Param() miniUrl:any, @Body() body: any) {
+        console.log("miniUrl", miniUrl)
+        const response = await this.minifyURLService.deleteUrl(body.user.userId, miniUrl.miniUrl );
         if (response.modifiedCount !== 1) {
             throw new BadRequestException('unable to remove url');
         } else {

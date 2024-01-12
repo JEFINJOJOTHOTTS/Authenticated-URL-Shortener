@@ -15,7 +15,8 @@ function minifyUrl(event) {
         axios.post('/minify-url', { url: inpLongUrl.value}).then(() => {
             swal({
                 title: 'Url Minified',
-                icon: 'success',
+                icon: 'success', 
+               
 
             }).then(() => {
                 window.location.href = 'minify-url'
@@ -27,6 +28,40 @@ function minifyUrl(event) {
 
     // }
 
+}
+
+
+function deleteUrl(url){
+    console.log(url)
+    swal({
+        title: 'Are you sure?',
+        text: 'Delete?',
+        icon: 'warning',
+        buttons: ['Cancel', 'Okay'],
+        dangerMode: true,
+    }).then((isConfirmed) => {
+        if (isConfirmed) {
+            axios.patch(`/minify-url/${url}`).then(() => {
+                swal({
+                    title: 'deleted',
+                    icon: 'success',
+        
+                }).then(() => {
+                    window.location.href = 'minify-url'
+                })
+          
+            }).catch(() => {
+                swal({
+                    title: '',
+                    icon: 'error',
+        
+                })
+            })
+        
+        } 
+    });
+    
+    
 }
 
 
