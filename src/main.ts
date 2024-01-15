@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 import * as cookieParser from 'cookie-parser';
 import * as nocache from 'nocache';
+import { HttpExceptionFilter } from 'src/components/filters/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(
@@ -18,6 +19,8 @@ async function bootstrap() {
   app.setViewEngine('ejs');
   app.use(cookieParser());
   app.use(nocache());
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   try {
 
