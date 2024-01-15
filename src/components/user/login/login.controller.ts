@@ -2,6 +2,7 @@ import { Controller, HttpStatus, HttpCode, Get, Post, Body, Res, UseGuards } fro
 import { Response } from 'express';
 import { LoginService } from './login.service'
 import { UserInfo } from 'src/dto/schema/signUp';
+import { LogoutGuard } from 'src/components/user/auth/logout.guard';
 
 @Controller('login')
 export class LoginController {
@@ -20,6 +21,7 @@ export class LoginController {
 
     }
 
+    @UseGuards(LogoutGuard)
     @Get()
     loadLogin(@Res() res: Response) {
 
