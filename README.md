@@ -2,9 +2,13 @@
 
 A URL Shortener made with the help of Node.js(nestjs), ejs(Embedded JavaScript templating) and MongoDB as Database.
 ## Features
-   Shorten Your URLs Easily
- User Profile
- JWT authentication, hashed password
+
+- **Shorten Your URLs Easily:** Utilize our user-friendly URL shortener to easily create concise and shareable links.
+
+- **User Profile:** Manage your personal profile to customize your experience and keep track of your shortened URLs.
+
+- **JWT Authentication & Hashed Passwords:** Secure your account with JSON Web Token (JWT) authentication and hashed passwords for enhanced privacy and protection.
+
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
