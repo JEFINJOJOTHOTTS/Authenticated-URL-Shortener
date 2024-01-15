@@ -1,7 +1,6 @@
-<h1>URL Shortener<h1>
-<p>
+## URL Shortener
+
 A URL Shortener made with the help of Node.js(nestjs), ejs(Embedded JavaScript templating) and MongoDB as Database.
-</p>
 <h1>Features<h1>
  <ul>
   <li>Shorten Your URLs Easily</li>
