@@ -13,9 +13,9 @@ A URL Shortener made with the help of Node.js(nestjs), ejs(Embedded JavaScript t
 This project is built using the following technologies:
 
 - [Nest.js](https://docs.nestjs.com/)
-- [Node.js](https://docs.nestjs.com/)
-- [mongodb](https://docs.nestjs.com/)
-- [ejs.js](https://docs.nestjs.com/)
+- [Node.js](https://nodejs.org/api/documentation.html)
+- [mongodb](https://www.mongodb.com/docs/drivers/node/current/)
+- [ejs.js](https://ejs.co/#docs)
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

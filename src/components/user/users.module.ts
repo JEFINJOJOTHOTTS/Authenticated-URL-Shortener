@@ -21,6 +21,7 @@ import 'dotenv/config'
   controllers: [SignUpController, LoginController, LogoutController],
   exports: [LoginService]
 })
+
 export class ComponentsModule implements NestModule { 
   configure(consumer: MiddlewareConsumer) {
     consumer
