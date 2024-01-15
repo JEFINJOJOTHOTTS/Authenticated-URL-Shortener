@@ -1,8 +1,13 @@
 <h1>URL Shortener<h1>
-<p align="center">
+<p>
 A URL Shortener made with the help of Node.js(nestjs), ejs(Embedded JavaScript templating) and MongoDB as Database.
 </p>
-
+<h1>Features<h1>
+ <ul>
+  <li>Shorten Your URLs Easily</li>
+ <li>User Profile</li>
+ <li>JWT authentication, hashed password</li>
+</ul>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
