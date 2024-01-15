@@ -3,9 +3,9 @@
 A URL Shortener made with the help of Node.js(nestjs), ejs(Embedded JavaScript templating) and MongoDB as Database.
 ## Features
 
-- **Shorten Your URLs Easily:** Utilize our user-friendly URL shortener to easily create concise and shareable links.
+- **Shorten Your URLs Easily:** 
 
-- **User Profile:** Manage your personal profile to customize your experience and keep track of your shortened URLs.
+- **User Profile:** Manage your personal profile keep track of your shortened URLs.
 
 - **JWT Authentication & Hashed Passwords:** Secure your account with JSON Web Token (JWT) authentication and hashed passwords for enhanced privacy and protection.
 
